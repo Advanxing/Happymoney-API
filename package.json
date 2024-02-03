@@ -1,0 +1,36 @@
+{
+  "name": "happymoney-api",
+  "version": "1.0.0",
+  "description": "An api wrapper for Happymoney.",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node ./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DollarNoob/Happymoney-API.git"
+  },
+  "keywords": [
+    "happymoney",
+    "transkey",
+    "mtranskey",
+    "raonsecure",
+    "charge"
+  ],
+  "author": "DollarNoob",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/DollarNoob/Happymoney-API/issues"
+  },
+  "homepage": "https://github.com/DollarNoob/Happymoney-API#readme",
+  "dependencies": {
+    "@modern-dev/jsbn": "^1.2.5",
+    "@types/node": "^20.11.16",
+    "axios": "^1.6.7",
+    "http-cookie-agent": "^6.0.1",
+    "tough-cookie": "^4.1.3"
+  },
+  "devDependencies": {
+    "@types/tough-cookie": "^4.0.5"
+  }
+}
