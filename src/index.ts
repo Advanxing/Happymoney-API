@@ -1,4 +1,4 @@
-import Happymoney, { LoginResponse, ChargeResponse } from "./mTranskey/happymoney.js";
+import Happymoney, { LoginResponse, ChargeResponse } from "./happymoney.js";
 
 const client = new Happymoney();
 

@@ -1,11 +1,11 @@
-import axios from "axios";
+import axios, { AxiosInstance } from "axios";
 import { HttpCookieAgent, HttpsCookieAgent } from "http-cookie-agent/http";
 import { CookieJar } from "tough-cookie";
 import mTransKey from "./mTranskey/transkey.js";
 
 export default class Happymoney {
     private jar;
-    private client;
+    private client: AxiosInstance;
 
     constructor() {
         this.jar = new CookieJar();
