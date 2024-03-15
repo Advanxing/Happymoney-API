@@ -1,7 +1,7 @@
 import axios from "axios";
 import { HttpCookieAgent, HttpsCookieAgent } from "http-cookie-agent/http";
 import { CookieJar } from "tough-cookie";
-import mTransKey from "./transkey.js";
+import mTransKey from "./mTranskey/transkey.js";
 
 export default class Happymoney {
     private jar;
@@ -11,7 +11,7 @@ export default class Happymoney {
         this.jar = new CookieJar();
         this.client = axios.create({
             headers: {
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
                 "Connection": "keep-alive"
             },
             httpAgent: new HttpCookieAgent({ cookies: { jar: this.jar } }),
@@ -26,9 +26,18 @@ export default class Happymoney {
      * @returns 로그인 성공 여부, 로그인 결과 메시지
      */
     async login(id: string, password: string) {
+        const transKey = new mTransKey(this.jar);
+        await transKey.getServletData();
+        await transKey.getKeyData();
+
+        const keypad = await transKey.createKeypad("qwerty", "memberPwd", "", "password");
+        const encryptedPassword = keypad.encryptPassword(password);
+
         const payload = new URLSearchParams({
             memberId: id,
-            memberPwd: password,
+            memberPwd: encryptedPassword,
+            HM_memberPwd: transKey.crypto.hmacDigest(encryptedPassword),
+            transkeyUuid: transKey.crypto.transkeyUuid,
             autoLoginYn: "N"
         });
 

@@ -4,17 +4,16 @@ import genKey from "./genKey.js";
 
 const pKey = ["00e007f62b9d3d5fb699af7fd6e4104622225823f47a28badcfd6e1412ca07549fadad5e5436435e5ba62166e42f458053aa0d13c58af37444d71dcd6c09ef38ef9b80420459bc509b91437a21d4583ca594b43ee7692c9324180e978bcc4865db70e2e479a9ca7a2016d811f912fe9404799bbec16b799133ec165dc1932d5f9dfef3e9409d0fa450105bcaa563d89ff774c8fbc187f8485098a4757b9162e1540943d442c618c8469bdad6711961d65cd33217b32e72104262db0f3518f161aa5f1095f09430bfc789888ef6754c427a3b48e7e31ee32ee75e4cc28f35accbd7e0da29df7d0595f0a48e16ea83ad8749cbca38289ba5d7a67056eafafd0fbf69", "010001"];
 
-class Crypto {
+export default class Crypto {
     public sessionKey: number[];
     public transkeyUuid: string;
     public genSessionKey: string;
     public encSessionKey: string;
     public allocationIndex: number;
     public constructor() {
-        this.sessionKey = new Array(16);
         this.transkeyUuid = genKey.tk_sh1prng();
         this.genSessionKey = genKey.GenerateKey(128);
-        for (var i = 0; i < 16; i++) this.sessionKey[i] = Number("0x0" + this.genSessionKey.charAt(i));
+        this.sessionKey = new Array(16).fill(null).map((_, i) => parseInt(this.genSessionKey.charAt(i), 16));
         this.encSessionKey = this.phpbb_encrypt2048(this.genSessionKey, 256, pKey[1], pKey[0]);
         this.allocationIndex = genKey.tk_getrnd_int();
     }
@@ -173,13 +172,8 @@ class Crypto {
 
         var _rsaoen = "";
 
-        while (_rsaoen.length < 512) {
-            _rsaoen = this.rsaes_oaep_encrypt(plaintext, _n, k, _e);
-            if (_rsaoen.length > 511) break;
-        }
+        while (_rsaoen.length < 512) _rsaoen = this.rsaes_oaep_encrypt(plaintext, _n, k, _e);
 
         return _rsaoen;
     }
-};
-
-export default Crypto;
+}

@@ -4,7 +4,7 @@ import { CookieJar } from "tough-cookie";
 import Crypto from "./crypto.js";
 import KeyPad from "./keypad.js";
 
-class mTransKey {
+export default class mTransKey {
     public crypto: Crypto;
     public token: string;
     public qwerty: number[][];
@@ -22,7 +22,7 @@ class mTransKey {
             httpAgent: new HttpCookieAgent({ cookies: { jar: this.jar } }),
             httpsAgent: new HttpsCookieAgent({ cookies: { jar: this.jar } }),
             headers: {
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
                 "Connection": "keep-alive"
             }
         };
@@ -36,7 +36,7 @@ class mTransKey {
             httpAgent: new HttpCookieAgent({ cookies: { jar: this.jar } }),
             httpsAgent: new HttpsCookieAgent({ cookies: { jar: this.jar } }),
             headers: {
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
                 "Connection": "keep-alive"
             }
         };
@@ -76,7 +76,7 @@ class mTransKey {
             httpAgent: new HttpCookieAgent({ cookies: { jar: this.jar } }),
             httpsAgent: new HttpsCookieAgent({ cookies: { jar: this.jar } }),
             headers: {
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
                 "Connection": "keep-alive"
             }
         };
@@ -97,5 +97,3 @@ class mTransKey {
         return new KeyPad(keyboardType === "qwerty" ? this.qwerty : this.number, keyboardType, skipData.split(","), this.crypto.sessionKey, fieldType);
     }
 }
-
-export default mTransKey;
