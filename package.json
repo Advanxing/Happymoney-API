@@ -1,6 +1,6 @@
 {
   "name": "happymoney-api",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An api wrapper for Happymoney.",
   "main": "index.js",
   "scripts": {
@@ -32,5 +32,6 @@
   },
   "devDependencies": {
     "@types/tough-cookie": "^4.0.5"
-  }
+  },
+  "type": "module"
 }
