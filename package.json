@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DollarNoob/Happymoney-API.git"
+    "url": "git+https://github.com/Giftland/Happymoney-API.git"
   },
   "keywords": [
     "happymoney",
@@ -17,12 +17,11 @@
     "raonsecure",
     "charge"
   ],
-  "author": "DollarNoob",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/DollarNoob/Happymoney-API/issues"
+    "url": "https://github.com/Giftland/Happymoney-API/issues"
   },
-  "homepage": "https://github.com/DollarNoob/Happymoney-API#readme",
+  "homepage": "https://github.com/Giftland/Happymoney-API#readme",
   "dependencies": {
     "@modern-dev/jsbn": "^1.2.5",
     "@types/node": "^20.11.16",
